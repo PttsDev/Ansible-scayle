@@ -1,0 +1,7 @@
+---
+- name: Disable updates
+  ansible.builtin.apt:
+    # Se elimina el paquete de unattended-upgrades
+    name: unattended-upgrades
+    state: absent
+    purge: yes

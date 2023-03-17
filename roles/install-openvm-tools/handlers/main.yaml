@@ -1,0 +1,6 @@
+---
+- name: Start openvm-tools
+  ansible.builtin.service:
+    name: open-vm-tools
+    state: started
+    enabled: yes

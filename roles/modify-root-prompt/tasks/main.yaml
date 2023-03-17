@@ -1,0 +1,7 @@
+---
+- name: Modify color of root prompt
+  ansible.builtin.lineinfile:
+    path: /root/.bashrc
+    regexp: "^PS1="
+    # Se cambia el color del prompt de root
+    line: PS1='${debian_chroot:+($debian_chroot)}{{ color1 }}\u@\h{{ default }}:{{ color2 }}\w{{ default }}\$ '

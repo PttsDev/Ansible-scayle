@@ -1,0 +1,9 @@
+---
+- name: Install open-vm-tools if server is running on VMware
+  ansible.builtin.apt:
+    name: open-vm-tools
+    state: present
+    update_cache: yes
+  # Se instala y se ejecuta el handler (que inicia el servicio) solo si el servidor está corriendo en VMware
+  when: ansible_virtualization_type == "VMware"
+  notify: Start openvm-tools

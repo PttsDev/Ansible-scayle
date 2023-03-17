@@ -1,0 +1,12 @@
+---
+- name: Configure servers Scayle
+  hosts: all
+  become: true
+
+roles: 
+  - disable-automatic-updates
+  - install-openvm-tools
+  - modify-root-prompt
+
+tasks:
+  - include_tasks: tasks/modify-motd.yaml
