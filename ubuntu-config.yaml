@@ -7,6 +7,8 @@
   - disable-automatic-updates
   - install-openvm-tools
   - modify-root-prompt
+  - disable-kernel-update
 
   tasks:
+  - include_tasks: tasks/change-dateZone.yaml
   - include_tasks: tasks/modify-motd.yaml
