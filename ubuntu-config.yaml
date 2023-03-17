@@ -3,10 +3,10 @@
   hosts: all
   become: true
 
-roles: 
+  roles: 
   - disable-automatic-updates
   - install-openvm-tools
   - modify-root-prompt
 
-tasks:
+  tasks:
   - include_tasks: tasks/modify-motd.yaml
