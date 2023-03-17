@@ -1,10 +1,20 @@
 ---
-- name: Modify MOTD to show a Scayle message
-  # Añado el nuevo mensaje en etc/motd que es donde se encuentra el mensaje de bienvenida
-  ansible.builtin.lineinfile:
-    path: /etc/motd
-    line: |
-      *********************************************************************
-      * Ha accedido a un sistema propiedad de SCAYLE. Su actividad será monitorizada *
-      * You logged on into a server property of SCAYLE. Your activity will be logged *
-      *********************************************************************
+- name: Disable default MOTD scripts
+  # Se deshabilita el MOTD por defecto de ubuntu
+  ansible.builtin.file:
+    path: /etc/update.motd.d
+    mode: u-x,g-x,o-x
+    state: directory
+    recurse: yes
+  
+  # Se añade el nuevo MOTD
+- name: Create new MOTD script
+  ansible.builtin.copy:
+    path: /etc/update.motd.d/01-scayle-motd
+    content: |
+      #!/bin/bash
+      echo "*********************************************************************"
+      echo "* Ha accedido a un sistema propiedad de SCAYLE. Su actividad será monitorizada *"
+      echo "* You logged on into a server property of SCAYLE. Your activity will be logged *"
+      echo "*********************************************************************"
+    mode: u+x,g+x,o+x
