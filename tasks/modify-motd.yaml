@@ -2,7 +2,7 @@
 - name: Disable default MOTD scripts
   # Se deshabilita el MOTD por defecto de ubuntu
   ansible.builtin.file:
-    path: /etc/update.motd.d
+    path: /etc/update-motd.d
     mode: u-x,g-x,o-x
     state: directory
     recurse: yes
@@ -10,7 +10,7 @@
   # Se añade el nuevo MOTD
 - name: Create new MOTD script
   ansible.builtin.copy:
-    path: /etc/update.motd.d/01-scayle-motd
+    dest: /etc/update-motd.d/01-scayle-motd
     content: |
       #!/bin/bash
       echo "*********************************************************************"
