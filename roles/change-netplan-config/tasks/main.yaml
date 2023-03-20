@@ -1,0 +1,19 @@
+- name: Copiar el archivo de configuración de netplan
+  ansible.builtin.copy:
+    content: |
+      network:
+        version: 2
+        renderer: networkd
+        ethernets:
+          {{ interfaz_de_red }}:
+            dhcp4: no
+            addresses: [{{ direccion_ip }}/{{ mascara_de_red }}]
+            gateway4: {{ gateway }}
+            nameservers:
+              addresses: [{{ dns }}]
+    dest: /etc/netplan/01-netcfg.yaml
+
+- name: Aplicar cambios de netplan
+  ansible.builtin.command: netplan apply
+  async: 45
+  poll: 0

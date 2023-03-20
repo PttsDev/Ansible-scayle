@@ -8,6 +8,9 @@
   - install-openvm-tools
   - modify-root-prompt
   - disable-kernel-update
+  - Create-user-with-password
+  - change-netplan-config
+  
 
   tasks:
   - include_tasks: tasks/change-dateZone.yaml
