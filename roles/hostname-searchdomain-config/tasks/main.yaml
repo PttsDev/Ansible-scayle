@@ -1,3 +1,4 @@
+---
 - name: Config hostname and search domain
 
   - name: set hostname

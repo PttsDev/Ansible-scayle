@@ -1,3 +1,4 @@
+---
 - name: Copiar el archivo de configuración de netplan
   ansible.builtin.copy:
     content: |
