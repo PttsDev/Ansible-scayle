@@ -1,5 +1,0 @@
-interfaz_de_red: eth0
-direccion_ip: 10.7.0.100
-mascara_de_red: 24
-gateway: 10.7.0.1
-dns: 8.8.8.8, 8.8.4.4
