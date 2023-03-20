@@ -15,15 +15,15 @@
     name: ntp
     state: stopped
 
-- name: Sincronize current time with NTP server
-  ansible.builtin.command: ntpdate {{ servidor_ntp }}
-
 - name: Configure NTP file
   ansible.builtin.lineinfile:
     path: /etc/ntp.conf
     regexp: "^server"
     line: "server {{ servidor_ntp }}"
     state: present
+
+- name: Sincronize current time with NTP server
+  ansible.builtin.command: ntpdate {{ servidor_ntp }}
 
 # Se inicia el servicio tras la configuración
 - name: Start NTP service
