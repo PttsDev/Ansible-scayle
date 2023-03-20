@@ -29,7 +29,7 @@
     - Create-user-with-password
     #- change-netplan-config #Comentado porque reinicia la conexion
     - hostname-searchdomain-config
-    - ntp-config
+    #- ntp-config #Comentado porque falla al no existir el servidor ntp
     - firehol-config
   tasks:
     - include_tasks: tasks/change-dateZone.yaml
