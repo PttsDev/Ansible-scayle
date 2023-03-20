@@ -1,0 +1,21 @@
+- name: Install fireHOL
+  ansible.builtin.apt:
+    name: firehol
+    state: present
+
+- name: Create basic config file for fireHOL
+  ansible.builtin.copy:
+    content: |
+      version 6
+      # Permitir todas las conexiones de cliente y servidor
+      interface any world
+        client all accept
+        server all accept
+    dest: /etc/firehol/firehol.conf
+
+- name: Activate and start FireHOL
+  ansible.builtin.service:
+    name: firehol
+    # Iniciarlo automaticamente al arrancar el sistema
+    enabled: yes
+    state: started
