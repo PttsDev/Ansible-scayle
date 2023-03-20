@@ -2,6 +2,11 @@
 - name: Configure servers Scayle
   hosts: all
   become: true
+  # Para login SSH mediante contraseña, hace falta el paquete sshpass
+  #vars:
+  # ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+  # ansible_ssh_user: sysops
+  # ansible_ssh_pass: sysops
 
   roles: 
   - disable-automatic-updates
