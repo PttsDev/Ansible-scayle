@@ -17,7 +17,7 @@
 
 - name: Configure NTP file
   ansible.builtin.lineinfile:
-    path: /etc/ntp.conf
+    path: /etc/ntpsec/ntp.conf
     regexp: "^server"
     line: "server {{ servidor_ntp }}"
     state: present
