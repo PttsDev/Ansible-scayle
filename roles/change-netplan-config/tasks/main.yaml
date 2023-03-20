@@ -15,5 +15,3 @@
 
 - name: Aplicar cambios de netplan
   ansible.builtin.command: netplan apply
-  async: 45
-  poll: 0

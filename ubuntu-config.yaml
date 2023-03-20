@@ -9,7 +9,7 @@
   - modify-root-prompt
   - disable-kernel-update
   - Create-user-with-password
-  - change-netplan-config
+  #- change-netplan-config #Comentado porque reinicia la conexion
   
 
   tasks:
