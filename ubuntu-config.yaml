@@ -27,8 +27,10 @@
     - modify-root-prompt
     - disable-kernel-update
     - Create-user-with-password
-  #- change-netplan-config #Comentado porque reinicia la conexion
-
+    #- change-netplan-config #Comentado porque reinicia la conexion
+    - hostname-searchdomain-config
+    - ntp-config
+    - firehol-config
   tasks:
     - include_tasks: tasks/change-dateZone.yaml
     - include_tasks: tasks/modify-motd.yaml
