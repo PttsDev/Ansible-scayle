@@ -4,6 +4,11 @@
     name: ntp
     state: present
 
+- name: Install ntpdate packet
+  ansible.builtin.apt:
+    name: ntpdate
+    state: present
+
 # Se para antes de sincronizar la hora
 - name: Stop NTP service
   ansible.builtin.service:
