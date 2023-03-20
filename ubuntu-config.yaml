@@ -2,21 +2,33 @@
 - name: Configure servers Scayle
   hosts: all
   become: true
-  # Para login SSH mediante contraseña, hace falta el paquete sshpass
-  #vars:
-  # ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-  # ansible_ssh_user: sysops
-  # ansible_ssh_pass: sysops
 
-  roles: 
-  - disable-automatic-updates
-  - install-openvm-tools
-  - modify-root-prompt
-  - disable-kernel-update
-  - Create-user-with-password
+  vars:
+    # Para login SSH mediante contraseña, hace falta el paquete sshpass
+    #  ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+    #  ansible_ssh_user: sysops
+    #  ansible_ssh_pass: sysops
+
+    # variables generales
+    servidor_ntp: 10.5.2.11
+    servidor_de_logs: 10.5.2.10
+    hostname: srv-test
+    dominio_de_busqueda: scayle.es
+    interfaz_de_red: eth0
+    ip: 10.7.0.100
+    netmask: 24
+    gateway: 10.7.0.1
+    dns: 8.8.8.8, 8.8.4.4
+  #  comunidad_snmp: ....
+
+  roles:
+    - disable-automatic-updates
+    - install-openvm-tools
+    - modify-root-prompt
+    - disable-kernel-update
+    - Create-user-with-password
   #- change-netplan-config #Comentado porque reinicia la conexion
-  
 
   tasks:
-  - include_tasks: tasks/change-dateZone.yaml
-  - include_tasks: tasks/modify-motd.yaml
+    - include_tasks: tasks/change-dateZone.yaml
+    - include_tasks: tasks/modify-motd.yaml

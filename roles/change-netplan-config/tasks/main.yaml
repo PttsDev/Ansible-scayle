@@ -7,7 +7,7 @@
         ethernets:
           {{ interfaz_de_red }}:
             dhcp4: no
-            addresses: [{{ direccion_ip }}/{{ mascara_de_red }}]
+            addresses: [{{ ip }}/{{ netmask }}]
             gateway4: {{ gateway }}
             nameservers:
               addresses: [{{ dns }}]
