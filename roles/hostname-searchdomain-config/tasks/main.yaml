@@ -1,18 +1,18 @@
 ---
 - name: Config hostname and search domain
 
-  - name: set hostname
+  - name: Set hostname
     ansible.builtin.hostname:
       name: "{{ hostname }}"
 
-  - name: set search domain
+  - name: Set search domain
      ansible.builtin.lineinfile:
       path: /etc/resolv.conf
       line: "search {{ dominio_de_busqueda }}"
       state: present
 
   # El nombre en /etc/hosts es su hostname
-  - name: add to /etc/hosts
+  - name: Add to /etc/hosts
     ansible.builtin.lineinfile:
       path: /etc/hosts
       line: "{{ ip }} {{ hostname }}"
