@@ -1,0 +1,37 @@
+---
+- name: Install ClamAV
+  ansible.builtin.apt:
+    name: clamav
+    state: present
+
+- name: Configure freshclam
+  ansible.builtin.lineinfile:
+    path: /etc/clamav/freshclam.conf
+    regexp: '^UpdateLogFile'
+    line: 'UpdateLogFile /var/log/freshclam.log'
+
+- name: Create file clamd.conf
+  ansible.builtin.file:
+      path: "/etc/clamav/clamd.conf"
+      state: touch
+
+- name: Configure clamd
+  ansible.builtin.lineinfile:
+    path: /etc/clamav/clamd.conf
+    regexp: '^#TCPSocket'
+    line: 'TCPSocket 3310'
+
+- name: Update virus data base each hour
+  ansible.builtin.cron:
+    name: Update ClamAV virus database
+    hour: '*'
+    minute: '*/{{ freshclam_update_interval }}'
+    job: '/usr/bin/freshclam'
+
+- name: Update diskscan every 2 days
+  ansible.builtin.cron:
+    name: Run ClamAV disk scan
+    hour: '0'
+    minute: '0'
+    day: '*/2'
+    job: '/usr/bin/clamscan -r /'

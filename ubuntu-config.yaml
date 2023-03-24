@@ -36,6 +36,7 @@
     - snmpd-config
     - syslog-config
     - rkhunter-config
+    - install-ClamAv-and-config
   tasks:
     - include_tasks: tasks/change-dateZone.yaml
     - include_tasks: tasks/modify-motd.yaml
