@@ -1,0 +1,16 @@
+- name: Installl the snmpd service
+  ansible.builtin.apt:
+    name: snmpd
+    state: present
+
+- name: Configure the lecture community of snmpd
+  ansible.builtin.lineinfile:
+    path: /etc/snmp/snmpd.conf
+    regexp: "^rocommunity"
+    line: "rocommunity {{ comunidad_snmp }}"
+
+- name: Activate and run the snmpd service
+  ansible.builtin.service:
+    name: snmpd
+    state: started
+    enabled: true
