@@ -1,0 +1,4 @@
+- name: Configuration of syslog to send logs to a server using 514 port
+  ansible.builtin.lineinfile:
+    path: /etc/rsyslog.conf
+    line: "*.* @@{{ servidor_de_logs }}:514"

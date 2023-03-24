@@ -34,6 +34,7 @@
     #- config-kernel-params
     - fail2ban-config
     - snmpd-config
+    - syslog-config
   tasks:
     - include_tasks: tasks/change-dateZone.yaml
     - include_tasks: tasks/modify-motd.yaml
