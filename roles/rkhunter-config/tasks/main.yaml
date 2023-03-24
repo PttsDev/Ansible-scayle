@@ -1,0 +1,27 @@
+- name: Install rkhunter
+  ansible.builtin.apt:
+    name: rkhunter
+    state: present
+
+- name: Configure automatic ejecution of rkhunter
+  ansible.builtin.cron:
+    name: Ejecutar rkhunter
+    minute: 0
+    hour: 0
+    job: rkhunter --cronjob --update --quiet
+
+- name: Install postfix
+  ansible.builtin.apt:
+    name: postfix
+    state: present
+
+- name: Configure postfix to send emails
+  ansible.builtin.lineinfile:
+    path: /etc/postfix/main.cf
+    regexp: '^relayhost'
+    line: 'relayhost = {{ relayhost }}'
+
+- name: Restart the service postfix
+  ansible.builtin.service:
+    name: postfix
+    state: restarted

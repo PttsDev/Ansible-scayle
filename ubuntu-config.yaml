@@ -35,6 +35,7 @@
     - fail2ban-config
     - snmpd-config
     - syslog-config
+    - rkhunter-config
   tasks:
     - include_tasks: tasks/change-dateZone.yaml
     - include_tasks: tasks/modify-motd.yaml
