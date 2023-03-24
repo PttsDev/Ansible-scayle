@@ -1,3 +1,4 @@
+---
 - name: Installl the snmpd service
   ansible.builtin.apt:
     name: snmpd
