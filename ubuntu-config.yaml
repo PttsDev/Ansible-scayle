@@ -30,8 +30,9 @@
     #- change-netplan-config #Comentado porque reinicia la conexion
     - hostname-searchdomain-config
     #- ntp-config #Comentado porque falla al no existir el servidor ntp
-    - firehol-config
-    - config-kernel-params
+    #- firehol-config
+    #- config-kernel-params
+    - fail2ban-config
   tasks:
     - include_tasks: tasks/change-dateZone.yaml
     - include_tasks: tasks/modify-motd.yaml
