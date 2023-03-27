@@ -31,7 +31,7 @@
     - hostname-searchdomain-config
     #- ntp-config #Comentado porque falla al no existir el servidor ntp
     - firehol-config
-    #- config-kernel-params
+    - config-kernel-params
     - fail2ban-config
     - snmpd-config
     - syslog-config
