@@ -1,10 +1,10 @@
 ---
-- name: Install fireHOL
+- name: Install FireHOL
   ansible.builtin.apt:
     name: firehol
     state: present
 
-- name: Create basic config file for fireHOL
+- name: Create basic config file for FireHOL
   ansible.builtin.copy:
     content: |
       version 6
@@ -13,6 +13,12 @@
         client all accept
         server all accept
     dest: /etc/firehol/firehol.conf
+
+- name: Activate FireHOL in /etc/default/firehol
+  ansible.builtin.lineinfile:
+    path: /etc/default/firehol
+    regexp: '^START_FIREHOL='
+    line: 'START_FIREHOL=YES'
 
 - name: Activate and start FireHOL
   ansible.builtin.service:
