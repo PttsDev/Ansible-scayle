@@ -26,3 +26,9 @@
   ansible.builtin.service:
     name: postfix
     state: restarted
+
+- name: start the service postfix
+  ansible.builtin.service:
+    name: postfix
+    state: started
+    enabled: yes

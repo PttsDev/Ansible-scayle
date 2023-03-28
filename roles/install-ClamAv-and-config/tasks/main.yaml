@@ -35,3 +35,27 @@
     minute: '0'
     day: '*/2'
     job: '/usr/bin/clamscan -r /'
+
+- name: restart freshclam
+  ansible.builtin.service:
+    name: clamav-freshclam
+    state: restarted
+
+- name: restart clamav
+  ansible.builtin.service:
+    name: clamav-daemon
+    state: restarted
+
+- name: Activate and start freshclam
+  ansible.builtin.service:
+    name: clamav-freshclam
+    # Iniciarlo automaticamente al arrancar el sistema
+    enabled: yes
+    state: started
+
+- name: Activate and start clamav
+  ansible.builtin.service:
+    name: clamav-daemon
+    # Iniciarlo automaticamente al arrancar el sistema
+    enabled: yes
+    state: started

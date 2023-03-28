@@ -13,3 +13,10 @@
   ansible.builtin.service:
     name: fail2ban
     state: restarted
+
+- name: Start fail2ban at startup
+  ansible.builtin.service:
+    name: fail2ban
+    # Iniciarlo automaticamente al arrancar el sistema
+    enabled: yes
+    state: started
