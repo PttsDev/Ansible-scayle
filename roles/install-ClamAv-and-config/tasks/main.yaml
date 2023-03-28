@@ -4,6 +4,11 @@
     name: clamav
     state: present
 
+- name: Install ClamAV daemon
+  ansible.builtin.apt:
+    name: clamav-daemon
+    state: present
+
 - name: Configure freshclam
   ansible.builtin.lineinfile:
     path: /etc/clamav/freshclam.conf
