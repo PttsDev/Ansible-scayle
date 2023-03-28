@@ -1,3 +1,0 @@
----
-freshclam_update_interval: 60 # Update virus database every hour
-clamscan_interval: 2880 # Run disk scan every 2 days
